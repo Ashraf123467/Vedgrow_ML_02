@@ -313,65 +313,65 @@ if st.button("🪄 Predict House Price"):
 
     # Premium Result Card
 
-    components.html(
-        f"""
+   components.html(
+    f"""
+
+    <div style="
+        background: linear-gradient(135deg,#2563eb,#1d4ed8);
+        padding:45px;
+        border-radius:25px;
+        text-align:center;
+        margin-top:30px;
+        box-shadow:0px 10px 25px rgba(0,0,0,0.35);
+        color:white;
+        font-family:Poppins,sans-serif;
+        width:78%;
+        margin-left:auto;
+        margin-right:auto;
+    ">
 
         <div style="
-            background: linear-gradient(135deg,#2563eb,#1d4ed8);
-            padding:70px;
-            border-radius:30px;
-            text-align:center;
-            margin-top:35px;
-            box-shadow:0px 12px 30px rgba(0,0,0,0.35);
-            color:white;
-            font-family:Poppins,sans-serif;
-            width:85%;
-            margin-left:auto;
-            margin-right:auto;
+            font-size:28px;
+            font-weight:600;
+            margin-bottom:25px;
+            opacity:0.95;
         ">
-
-            <div style="
-                font-size:34px;
-                font-weight:600;
-                margin-bottom:35px;
-                opacity:0.95;
-            ">
-                🏡 Estimated House Price
-            </div>
-
-            <div style="
-                font-size:90px;
-                font-weight:800;
-                margin-bottom:28px;
-                letter-spacing:1px;
-            ">
-                {usd_price}
-            </div>
-
-            <div style="
-                width:140px;
-                height:5px;
-                background:white;
-                margin:0 auto 35px auto;
-                border-radius:10px;
-                opacity:0.7;
-            ">
-            </div>
-
-            <div style="
-                font-size:40px;
-                font-weight:600;
-                opacity:0.95;
-            ">
-                {inr_display}
-            </div>
-
+            🏡 Estimated House Price
         </div>
 
-        """,
+        <div style="
+            font-size:68px;
+            font-weight:800;
+            margin-bottom:20px;
+            letter-spacing:1px;
+        ">
+            {usd_price}
+        </div>
 
-        height=520
-    )
+        <div style="
+            width:110px;
+            height:4px;
+            background:white;
+            margin:0 auto 22px auto;
+            border-radius:10px;
+            opacity:0.7;
+        ">
+        </div>
+
+        <div style="
+            font-size:32px;
+            font-weight:600;
+            opacity:0.95;
+        ">
+            {inr_display}
+        </div>
+
+    </div>
+
+    """,
+
+    height=360
+)
 # -----------------------------------
 # FEATURE IMPORTANCE
 # -----------------------------------
