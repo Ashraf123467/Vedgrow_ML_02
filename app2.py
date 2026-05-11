@@ -1,6 +1,7 @@
 import streamlit as st # type: ignore
 import pandas as pd # type: ignore
 import numpy as np # type: ignore
+import streamlit.components.v1 as components
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -285,45 +286,49 @@ if st.button("🪄 Predict House Price"):
     )
 
 
-    # Premium Result Card
+   usd_price = f"${predicted_price:,.0f}"
 
-    st.markdown(f"""
-    <div style='
-        background: linear-gradient(135deg,#2563eb,#1e40af);
-        padding:50px;
-        border-radius:25px;
-        text-align:center;
-        margin-top:30px;
-        box-shadow:0px 10px 25px rgba(0,0,0,0.4);
-    '>
+inr_display = f"Approx ₹{formatted_inr}"
 
-        <h1 style='
-            color:white;
-            font-size:50px;
-            margin-bottom:30px;
-        '>
-        🏡 Estimated House Price
-        </h1>
+components.html(f"""
 
-        <h2 style='
-            color:white;
-            font-size:70px;
-            font-weight:bold;
-            margin-bottom:30px;
-        '>
-         $""" + f"{predicted_price:,.0f}" + """
-        </h2>
+<div style="
+background: linear-gradient(135deg,#2563eb,#1e40af);
+padding:50px;
+border-radius:25px;
+text-align:center;
+margin-top:30px;
+box-shadow:0px 10px 25px rgba(0,0,0,0.4);
+">
 
-        <h3 style='
-            color:white;
-            font-size:38px;
-            font-weight:bold;
-        '>
-        Approx ₹""" + str(formatted_inr) + """
-        </h3>
+<h1 style="
+color:white;
+font-size:50px;
+margin-bottom:30px;
+">
+🏡 Estimated House Price
+</h1>
 
-    </div>
-    """, unsafe_allow_html=True)
+<h2 style="
+color:white;
+font-size:70px;
+font-weight:bold;
+margin-bottom:30px;
+">
+{usd_price}
+</h2>
+
+<h3 style="
+color:white;
+font-size:38px;
+font-weight:bold;
+">
+{inr_display}
+</h3>
+
+</div>
+
+""", height=350)
 
 # -----------------------------------
 # FEATURE IMPORTANCE
