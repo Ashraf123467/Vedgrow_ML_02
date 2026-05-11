@@ -242,7 +242,7 @@ if st.button("🪄 Predict House Price"):
 
     # Convert prediction to float
 
-   predicted_price = prediction[0]
+   predicted_price = prediction
 
     # USD to INR conversion
 
