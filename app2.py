@@ -258,7 +258,7 @@ if st.button("🪄 Predict House Price"):
 
         # Fallback value if API fails
 
-        usd_to_inr = 95
+        usd_to_inr = 95.32
 
 
     # INR Conversion
@@ -311,7 +311,7 @@ if st.button("🪄 Predict House Price"):
     inr_display = f"Approx ₹{formatted_inr}"
 
    
-    live_rate = f"💱 1 USD = ₹{usd_to_inr:.2f}"
+    live_rate = f"1 USD = ₹{usd_to_inr:.2f}"
 
 
     # Premium Result Card
