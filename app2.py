@@ -313,7 +313,7 @@ if st.button("🪄 Predict House Price"):
 
     # Premium Result Card
 
-   components.html(
+    components.html(
     f"""
 
     <div style="
