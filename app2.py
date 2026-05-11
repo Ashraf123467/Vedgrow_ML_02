@@ -237,11 +237,9 @@ if st.button("🪄 Predict House Price"):
 
     # Prediction
 
-    prediction = model.predict(features)[0]
+    predicted_price = model.predict(features)[0]
 
-    predicted_price = prediction
-
-    # USD to INR
+    # USD to INR Conversion
 
     usd_to_inr = 94.9
 
@@ -264,7 +262,7 @@ if st.button("🪄 Predict House Price"):
 
             remaining = ",".join(
                 [
-                    remaining[max(i-2, 0):i]
+                    remaining[max(i-2,0):i]
 
                     for i in range(
                         len(remaining),
@@ -286,56 +284,57 @@ if st.button("🪄 Predict House Price"):
     )
 
 
-# Premium Prediction Card
+    # Display Values
 
-usd_price = f"${predicted_price:,.0f}"
+    usd_price = f"${predicted_price:,.0f}"
 
-inr_display = f"Approx ₹{formatted_inr}"
+    inr_display = f"Approx ₹{formatted_inr}"
 
 
-components.html(
-    f"""
-    
-    <div style="
-        background: linear-gradient(135deg,#2563eb,#1e40af);
-        padding:50px;
-        border-radius:25px;
-        text-align:center;
-        margin-top:30px;
-        box-shadow:0px 10px 25px rgba(0,0,0,0.4);
-        color:white;
-        font-family:Arial;
-    ">
-    
-        <h1 style="
-            font-size:50px;
-            margin-bottom:30px;
+    # Premium Result Card
+
+    components.html(
+        f"""
+
+        <div style="
+            background: linear-gradient(135deg,#2563eb,#1e40af);
+            padding:50px;
+            border-radius:25px;
+            text-align:center;
+            margin-top:30px;
+            box-shadow:0px 10px 25px rgba(0,0,0,0.4);
+            color:white;
+            font-family:Arial;
         ">
-            🏡 Estimated House Price
-        </h1>
-    
-        <h2 style="
-            font-size:70px;
-            font-weight:bold;
-            margin-bottom:30px;
-        ">
-            {usd_price}
-        </h2>
-    
-        <h3 style="
-            font-size:38px;
-            font-weight:bold;
-        ">
-            {inr_display}
-        </h3>
-    
-    </div>
-    
-    """,
-    
-    height=400
-)
 
+            <h1 style="
+                font-size:50px;
+                margin-bottom:30px;
+            ">
+                🏡 Estimated House Price
+            </h1>
+
+            <h2 style="
+                font-size:70px;
+                font-weight:bold;
+                margin-bottom:30px;
+            ">
+                {usd_price}
+            </h2>
+
+            <h3 style="
+                font-size:38px;
+                font-weight:bold;
+            ">
+                {inr_display}
+            </h3>
+
+        </div>
+
+        """,
+
+        height=400
+    )
 # -----------------------------------
 # FEATURE IMPORTANCE
 # -----------------------------------
