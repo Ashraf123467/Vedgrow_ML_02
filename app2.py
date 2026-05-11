@@ -241,7 +241,7 @@ if st.button("🪄 Predict House Price"):
 
     # USD to INR Conversion
 
-    usd_to_inr = 94.9
+    usd_to_inr = 95.13
 
     inr_price = predicted_price * usd_to_inr
 
