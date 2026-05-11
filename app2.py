@@ -220,9 +220,11 @@ st.dataframe(input_data)
 # -----------------------------------
 # PREDICTION BUTTON
 # -----------------------------------
+# Predict Button
+
 if st.button("🪄 Predict House Price"):
 
-    # Create input array
+    # Input features
 
     features = np.array([[
         overall_qual,
@@ -234,119 +236,111 @@ if st.button("🪄 Predict House Price"):
         tot_rms_abv_grd
     ]])
 
-    # Prediction
+    # Predict
 
     prediction = model.predict(features)
 
-    # USD Display
+    # Convert prediction to float
+
+    predicted_price = float(prediction)
+
+    # USD to INR conversion
+
+    usd_to_inr = 94.9
+
+    inr_price = predicted_price * usd_to_inr
+
+
+    # Indian Currency Formatter
+
+    def format_indian_currency(number):
+
+        number = int(number)
+
+        s = str(number)
+
+        last_three = s[-3:]
+
+        remaining = s[:-3]
+
+        if remaining != "":
+
+            remaining = ",".join(
+
+                [
+                    remaining[max(i-2,0):i]
+
+                    for i in range(
+                        len(remaining),
+                        0,
+                        -2
+                    )
+
+                ][::-1]
+            )
+
+            return remaining + "," + last_three
+
+        else:
+
+            return last_three
+
+
+    formatted_inr = format_indian_currency(
+        inr_price
+    )
+
+
+    # Premium Prediction Card
 
     st.markdown(f"""
-    <div class="prediction-card">
-        <h1>🏡 Estimated House Price</h1>
-        <h2>${prediction[0]:,.0f}</h2>
+
+    <div style="
+        background: linear-gradient(
+            135deg,
+            #2563eb,
+            #1e40af
+        );
+
+        padding: 50px;
+
+        border-radius: 25px;
+
+        text-align: center;
+
+        margin-top: 30px;
+
+        box-shadow: 0px 10px 25px rgba(0,0,0,0.4);
+    ">
+
+        <h1 style="
+            color:white;
+            font-size:50px;
+            margin-bottom:30px;
+        ">
+        🏡 Estimated House Price
+        </h1>
+
+        <h2 style="
+            color:white;
+            font-size:70px;
+            font-weight:bold;
+            margin-bottom:30px;
+        ">
+        ${predicted_price:,.0f}
+        </h2>
+
+        <h3 style="
+            color:white;
+            font-size:38px;
+            font-weight:bold;
+        ">
+        Approx ₹{formatted_inr}
+        </h3>
+
     </div>
+
     """, unsafe_allow_html=True)
-
-  
-# USD to INR conversion
-
-usd_to_inr = 94.9
-
-inr_price = prediction[0] * usd_to_inr
-
-
-# Indian Currency Formatter
-
-def format_indian_currency(number):
-
-    number = int(number)
-
-    s = str(number)
-
-    last_three = s[-3:]
-
-    remaining = s[:-3]
-
-    if remaining != "":
-
-        remaining = ",".join(
-
-            [
-                remaining[max(i-2,0):i]
-
-                for i in range(
-                    len(remaining),
-                    0,
-                    -2
-                )
-
-            ][::-1]
-        )
-
-        return remaining + "," + last_three
-
-    else:
-
-        return last_three
-
-
-formatted_inr = format_indian_currency(
-    inr_price
-)
-
-
-# PREMIUM RESULT CARD
-
-st.markdown(f"""
-
-<div style="
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #1e40af
-    );
-
-    padding: 50px;
-
-    border-radius: 25px;
-
-    text-align: center;
-
-    margin-top: 30px;
-
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.4);
-
-">
-
-    <h1 style="
-        color:white;
-        font-size:50px;
-        margin-bottom:30px;
-    ">
-    🏡 Estimated House Price
-    </h1>
-
-    <h2 style="
-        color:white;
-        font-size:70px;
-        font-weight:bold;
-        margin-bottom:30px;
-    ">
-    ${prediction[0]:,.0f}
-    </h2>
-
-    <h3 style="
-        color:white;
-        font-size:38px;
-        font-weight:bold;
-    ">
-    Approx ₹{formatted_inr}
-    </h3>
-
-</div>
-
-""", unsafe_allow_html=True)
 
 # -----------------------------------
 # FEATURE IMPORTANCE
