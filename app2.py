@@ -220,68 +220,91 @@ st.dataframe(input_data)
 # -----------------------------------
 # PREDICTION BUTTON
 # -----------------------------------
-if st.button("🔮 Predict House Price"):
+if st.button("🪄 Predict House Price"):
 
-    prediction = model.predict(input_data)
-    
-   # USD to INR conversion
+    # Create input array
 
-usd_to_inr = 94.9
+    features = np.array([[
+        overall_qual,
+        gr_liv_area,
+        garage_cars,
+        total_bsmt_sf,
+        year_built,
+        full_bath,
+        totrms_abvgrd
+    ]])
 
-inr_price = prediction[0] * usd_to_inr
+    # Prediction
 
+    prediction = model.predict(features)
 
-# Function for Indian currency format
+    # USD Display
 
-def format_indian_currency(number):
+    st.markdown(f"""
+    <div class="prediction-card">
+        <h1>🏡 Estimated House Price</h1>
+        <h2>${prediction[0]:,.0f}</h2>
+    </div>
+    """, unsafe_allow_html=True)
 
-    number = int(number)
+    # USD to INR conversion
 
-    s = str(number)
+    usd_to_inr = 94.9
 
-    # Last 3 digits
-    last_three = s[-3:]
+    inr_price = prediction[0] * usd_to_inr
 
-    remaining = s[:-3]
+    # Indian Currency Formatter
 
-    if remaining != "":
+    def format_indian_currency(number):
 
-        remaining = ",".join(
-            [
-                remaining[max(i-2,0):i]
-                for i in range(
-                    len(remaining),
-                    0,
-                    -2
-                )
-            ][::-1]
-        )
+        number = int(number)
 
-        return remaining + "," + last_three
+        s = str(number)
 
-    else:
+        last_three = s[-3:]
 
-        return last_three
+        remaining = s[:-3]
 
+        if remaining != "":
 
-# Format INR price
+            remaining = ",".join(
 
-formatted_inr = format_indian_currency(
-    inr_price
-)
+                [
+                    remaining[max(i-2,0):i]
 
-# Display
+                    for i in range(
+                        len(remaining),
+                        0,
+                        -2
+                    )
 
-st.markdown(f"""
-<h3 style='
-    text-align:center;
-    color:white;
-    margin-top:10px;
-    font-size:28px;
-'>
-Approx ₹{formatted_inr}
-</h3>
-""", unsafe_allow_html=True)
+                ][::-1]
+            )
+
+            return remaining + "," + last_three
+
+        else:
+
+            return last_three
+
+    # Format INR
+
+    formatted_inr = format_indian_currency(
+        inr_price
+    )
+
+    # INR Display
+
+    st.markdown(f"""
+    <h3 style='
+        text-align:center;
+        color:white;
+        margin-top:10px;
+        font-size:30px;
+    '>
+    Approx ₹{formatted_inr}
+    </h3>
+    """, unsafe_allow_html=True)
 
 # -----------------------------------
 # FEATURE IMPORTANCE
