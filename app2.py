@@ -241,27 +241,6 @@ if st.button("🪄 Predict House Price"):
 
     predicted_price = model.predict(features)[0]
 
-
-    # Real-time USD to INR exchange rate
-
-   # Real-time USD to INR exchange rate
-
-   # try:
-
-    #    response = requests.get(
-     #       "https://api.exchangerate-api.com/v4/latest/USD"
-      #  )
-
-       # data = response.json()
-
-    #    usd_to_inr = float(
-    #        data["rates"]["INR"]
-     #   )
-
-   # except:
-
-    # Fallback value
-
     usd_to_inr = 95.32
 
 
