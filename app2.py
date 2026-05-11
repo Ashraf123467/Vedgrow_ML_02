@@ -302,7 +302,7 @@ if st.button("🪄 Predict House Price"):
 
     usd_price = f"${predicted_price:,.0f}"
 
-    inr_display = f"Approx ₹{formatted_inr}"
+    inr_price = f"Approx ₹{formatted_inr}"
 
 
     # Premium Result Card
