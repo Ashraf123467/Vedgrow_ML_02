@@ -248,21 +248,21 @@ if st.button("🪄 Predict House Price"):
 
    try:
 
-       response = requests.get(
-           "https://api.exchangerate-api.com/v4/latest/USD"
-       )
+        response = requests.get(
+            "https://api.exchangerate-api.com/v4/latest/USD"
+        )
 
-       data = response.json()
+        data = response.json()
 
-       usd_to_inr = float(
-        data["rates"]["INR"]
-       )
+        usd_to_inr = float(
+            data["rates"]["INR"]
+        )
 
     except:
 
     # Fallback value
 
-        usd_to_inr = 95.32
+         usd_to_inr = 95.32
 
 
     # INR Conversion
