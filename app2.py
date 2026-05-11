@@ -262,7 +262,7 @@ if st.button("🪄 Predict House Price"):
 
     # Fallback value
 
-         usd_to_inr = 95.32
+    usd_to_inr = 95.32
 
 
     # INR Conversion
