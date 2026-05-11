@@ -246,7 +246,7 @@ if st.button("🪄 Predict House Price"):
 
    # Real-time USD to INR exchange rate
 
-   try:
+    try:
 
         response = requests.get(
             "https://api.exchangerate-api.com/v4/latest/USD"
