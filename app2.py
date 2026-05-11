@@ -2,6 +2,7 @@ import streamlit as st # type: ignore
 import pandas as pd # type: ignore
 import numpy as np # type: ignore
 import streamlit.components.v1 as components
+import requests
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -238,12 +239,25 @@ if st.button("🪄 Predict House Price"):
     # Prediction
 
     predicted_price = model.predict(features)[0]
+# Real-time USD to INR exchange rate
 
-    # USD to INR Conversion
+    try:
 
-    usd_to_inr = 95.13
+        response = requests.get(
+            "https://open.er-api.com/v6/latest/USD"
+        )
 
-    inr_price = predicted_price * usd_to_inr
+        data = response.json()
+
+        usd_to_inr = data["rates"]["INR"]
+
+    except:
+
+    # Fallback value if API fails
+
+        usd_to_inr = 95
+
+        inr_price = predicted_price * usd_to_inr
 
 
     # Indian Currency Formatter
@@ -298,7 +312,7 @@ if st.button("🪄 Predict House Price"):
 
     <div style="
         background: linear-gradient(135deg,#2563eb,#1d4ed8);
-        padding:45px;
+        padding:70px;
         border-radius:30px;
         text-align:center;
         margin-top:35px;
@@ -311,35 +325,35 @@ if st.button("🪄 Predict House Price"):
     ">
 
         <div style="
-            font-size:28px;
+            font-size:34px;
             font-weight:600;
-            margin-bottom:25px;
+            margin-bottom:35px;
             opacity:0.95;
         ">
             🏡 Estimated House Price
         </div>
 
         <div style="
-            font-size:72px;
+            font-size:90px;
             font-weight:800;
-            margin-bottom:20px;
+            margin-bottom:28px;
             letter-spacing:1px;
         ">
             {usd_price}
         </div>
 
         <div style="
-            width:120px;
-            height:4px;
+            width:140px;
+            height:5px;
             background:white;
-            margin:0 auto 25px auto;
+            margin:0 auto 35px auto;
             border-radius:10px;
             opacity:0.7;
         ">
         </div>
 
         <div style="
-            font-size:32px;
+            font-size:40px;
             font-weight:600;
             opacity:0.95;
         ">
@@ -350,7 +364,7 @@ if st.button("🪄 Predict House Price"):
 
     """,
 
-    height=420
+    height=520
 )
 # -----------------------------------
 # FEATURE IMPORTANCE
