@@ -294,47 +294,64 @@ if st.button("🪄 Predict House Price"):
     # Premium Result Card
 
     components.html(
-        f"""
+    f"""
+
+    <div style="
+        background: linear-gradient(135deg,#2563eb,#1d4ed8);
+        padding:45px;
+        border-radius:30px;
+        text-align:center;
+        margin-top:35px;
+        box-shadow:0px 12px 30px rgba(0,0,0,0.35);
+        color:white;
+        font-family:Poppins,sans-serif;
+        width:85%;
+        margin-left:auto;
+        margin-right:auto;
+    ">
 
         <div style="
-            background: linear-gradient(135deg,#2563eb,#1e40af);
-            padding:50px;
-            border-radius:25px;
-            text-align:center;
-            margin-top:30px;
-            box-shadow:0px 10px 25px rgba(0,0,0,0.4);
-            color:white;
-            font-family:Arial;
+            font-size:28px;
+            font-weight:600;
+            margin-bottom:25px;
+            opacity:0.95;
         ">
-
-            <h1 style="
-                font-size:50px;
-                margin-bottom:30px;
-            ">
-                🏡 Estimated House Price
-            </h1>
-
-            <h2 style="
-                font-size:70px;
-                font-weight:bold;
-                margin-bottom:30px;
-            ">
-                {usd_price}
-            </h2>
-
-            <h3 style="
-                font-size:38px;
-                font-weight:bold;
-            ">
-                {inr_display}
-            </h3>
-
+            🏡 Estimated House Price
         </div>
 
-        """,
+        <div style="
+            font-size:72px;
+            font-weight:800;
+            margin-bottom:20px;
+            letter-spacing:1px;
+        ">
+            {usd_price}
+        </div>
 
-        height=400
-    )
+        <div style="
+            width:120px;
+            height:4px;
+            background:white;
+            margin:0 auto 25px auto;
+            border-radius:10px;
+            opacity:0.7;
+        ">
+        </div>
+
+        <div style="
+            font-size:32px;
+            font-weight:600;
+            opacity:0.95;
+        ">
+            {inr_display}
+        </div>
+
+    </div>
+
+    """,
+
+    height=420
+)
 # -----------------------------------
 # FEATURE IMPORTANCE
 # -----------------------------------
