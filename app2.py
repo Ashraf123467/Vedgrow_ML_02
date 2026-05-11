@@ -370,17 +370,17 @@ if st.button("🪄 Predict House Price"):
             {inr_display}
         </div>
 
-        <div style="
+       <div style="
             background:rgba(255,255,255,0.15);
             display:inline-block;
-            padding:10px 20px;
-            border-radius:12px;
+            padding:10px 22px;
+            border-radius:14px;
             font-size:20px;
-            font-weight:500;
+            font-weight:600;
             backdrop-filter:blur(5px);
         ">
-            {live_rate}
-        </div>
+           💵 1 USD = ₹{usd_to_inr:.2f}
+        </div> 
 
     </div>
 
