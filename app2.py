@@ -310,6 +310,9 @@ if st.button("🪄 Predict House Price"):
 
     inr_display = f"Approx ₹{formatted_inr}"
 
+   
+    live_rate = f"💱 1 USD = ₹{usd_to_inr:.2f}"
+
 
     # Premium Result Card
 
@@ -325,7 +328,7 @@ if st.button("🪄 Predict House Price"):
         box-shadow:0px 10px 25px rgba(0,0,0,0.35);
         color:white;
         font-family:Poppins,sans-serif;
-        width:78%;
+        width:70%;
         margin-left:auto;
         margin-right:auto;
     ">
@@ -340,7 +343,7 @@ if st.button("🪄 Predict House Price"):
         </div>
 
         <div style="
-            font-size:50px;;
+            font-size:58px;
             font-weight:800;
             margin-bottom:20px;
             letter-spacing:1px;
@@ -361,17 +364,32 @@ if st.button("🪄 Predict House Price"):
         <div style="
             font-size:32px;
             font-weight:600;
+            margin-bottom:22px;
             opacity:0.95;
         ">
             {inr_display}
+        </div>
+
+        <div style="
+            background:rgba(255,255,255,0.15);
+            display:inline-block;
+            padding:10px 20px;
+            border-radius:12px;
+            font-size:20px;
+            font-weight:500;
+            backdrop-filter:blur(5px);
+        ">
+            {live_rate}
         </div>
 
     </div>
 
     """,
 
-    height=360
+    height=430
 )
+
+
 # -----------------------------------
 # FEATURE IMPORTANCE
 # -----------------------------------
