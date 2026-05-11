@@ -252,7 +252,7 @@ if st.button("🪄 Predict House Price"):
 
 usd_to_inr = 94.9
 
-inr_price = prediction[0] * usd_to_inr
+inr_price = prediction * usd_to_inr
 
 
 # Indian Currency Formatter
