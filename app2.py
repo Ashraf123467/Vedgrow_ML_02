@@ -340,7 +340,7 @@ if st.button("🪄 Predict House Price"):
         </div>
 
         <div style="
-            font-size:68px;
+            font-size:55px;;
             font-weight:800;
             margin-bottom:20px;
             letter-spacing:1px;
