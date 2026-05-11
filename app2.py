@@ -190,7 +190,7 @@ full_bath = st.sidebar.slider(
     2
 )
 
-tot_rooms = st.sidebar.slider(
+tot_rms_abv_grd = st.sidebar.slider(
     "Total Rooms Above Ground",
     2,
     15,
