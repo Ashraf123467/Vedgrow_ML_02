@@ -222,7 +222,7 @@ st.dataframe(input_data)
 # -----------------------------------
 if st.button("🪄 Predict House Price"):
 
-    # Input features
+    # Input Features
 
     features = np.array([[
         overall_qual,
@@ -240,7 +240,7 @@ if st.button("🪄 Predict House Price"):
 
     predicted_price = prediction
 
-    # USD to INR conversion
+    # USD to INR
 
     usd_to_inr = 94.9
 
@@ -262,16 +262,14 @@ if st.button("🪄 Predict House Price"):
         if remaining != "":
 
             remaining = ",".join(
-
                 [
-                    remaining[max(i-2,0):i]
+                    remaining[max(i-2, 0):i]
 
                     for i in range(
                         len(remaining),
                         0,
                         -2
                     )
-
                 ][::-1]
             )
 
@@ -287,43 +285,45 @@ if st.button("🪄 Predict House Price"):
     )
 
 
- st.markdown(f"""
-<div style='
-background: linear-gradient(135deg,#2563eb,#1e40af);
-padding:50px;
-border-radius:25px;
-text-align:center;
-margin-top:30px;
-box-shadow:0px 10px 25px rgba(0,0,0,0.4);
-'>
+    # Premium Result Card
 
-<h1 style='
-color:white;
-font-size:50px;
-margin-bottom:30px;
-'>
-🏡 Estimated House Price
-</h1>
+    st.markdown(f"""
+    <div style='
+        background: linear-gradient(135deg,#2563eb,#1e40af);
+        padding:50px;
+        border-radius:25px;
+        text-align:center;
+        margin-top:30px;
+        box-shadow:0px 10px 25px rgba(0,0,0,0.4);
+    '>
 
-<h2 style='
-color:white;
-font-size:70px;
-font-weight:bold;
-margin-bottom:30px;
-'>
-${predicted_price:,.0f}
-</h2>
+        <h1 style='
+            color:white;
+            font-size:50px;
+            margin-bottom:30px;
+        '>
+        🏡 Estimated House Price
+        </h1>
 
-<h3 style='
-color:white;
-font-size:38px;
-font-weight:bold;
-'>
-Approx ₹{formatted_inr}
-</h3>
+        <h2 style='
+            color:white;
+            font-size:70px;
+            font-weight:bold;
+            margin-bottom:30px;
+        '>
+        ${predicted_price:,.0f}
+        </h2>
 
-</div>
-""", unsafe_allow_html=True)
+        <h3 style='
+            color:white;
+            font-size:38px;
+            font-weight:bold;
+        '>
+        Approx ₹{formatted_inr}
+        </h3>
+
+    </div>
+    """, unsafe_allow_html=True)
 
 # -----------------------------------
 # FEATURE IMPORTANCE
