@@ -379,7 +379,7 @@ if st.button("🪄 Predict House Price"):
             font-weight:600;
             backdrop-filter:blur(5px);
         ">
-           💵 1 USD = ₹{usd_to_inr:.2f}
+            1 USD = ₹{usd_to_inr:.2f}
         </div> 
 
     </div>
