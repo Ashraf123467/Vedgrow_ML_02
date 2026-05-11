@@ -207,7 +207,7 @@ input_data = pd.DataFrame({
     'Total Bsmt SF': [total_bsmt_sf],
     'Year Built': [year_built],
     'Full Bath': [full_bath],
-    'TotRms AbvGrd': [tot_rooms]
+    'tot_rms_abv_grd': [tot_rooms]
 })
 
 # -----------------------------------
