@@ -309,19 +309,45 @@ if st.button("🪄 Predict House Price"):
 # -----------------------------------
 # FEATURE IMPORTANCE
 # -----------------------------------
-st.subheader("🔥 Feature Importance")
+
+st.markdown("## 🔥 Feature Importance")
+
+feature_names = [
+
+    "Overall Quality",
+
+    "Living Area",
+
+    "Garage Cars",
+
+    "Basement Area",
+
+    "Year Built",
+
+    "Full Bathrooms",
+
+    "Total Rooms"
+
+]
 
 importance_df = pd.DataFrame({
-    'Feature': features,
+
+    'Feature': feature_names,
+
     'Importance': model.feature_importances_
+
 })
 
 importance_df = importance_df.sort_values(
+
     by='Importance',
+
     ascending=False
+
 )
 
 st.bar_chart(
+
     importance_df.set_index('Feature')
 )
 
