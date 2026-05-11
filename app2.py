@@ -224,42 +224,64 @@ if st.button("🔮 Predict House Price"):
 
     prediction = model.predict(input_data)
     
-    # Current approximate USD to INR rate
-    usd_to_inr = 94.9
+   # USD to INR conversion
 
-    # Convert predicted USD price to INR
-    inr_price = prediction[0] * usd_to_inr
+usd_to_inr = 94.9
 
-    st.markdown(f"""
-    <div class="result-box">
+inr_price = prediction[0] * usd_to_inr
 
-    <h2 style="
-        color:inherit;
-        margin-bottom:10px;
-        font-size:32px;
-    ">
-        🏡 Estimated House Price
-    </h2>
 
-    <h1 style="
-        color:inherit;
-        font-size:55px;
-        margin-top:10px;
-    ">
-        ${prediction[0]:,.0f}
-    </h1>
-    
-    <h3 style="
-        text-align:center;
-        color:white;
-        margin-top:10px;
-        font-size:28px;
-    ">
-        Approx ₹{inr_price:,.0f}
-    </h3>
+# Function for Indian currency format
 
-    </div>
-    """, unsafe_allow_html=True)
+def format_indian_currency(number):
+
+    number = int(number)
+
+    s = str(number)
+
+    # Last 3 digits
+    last_three = s[-3:]
+
+    remaining = s[:-3]
+
+    if remaining != "":
+
+        remaining = ",".join(
+            [
+                remaining[max(i-2,0):i]
+                for i in range(
+                    len(remaining),
+                    0,
+                    -2
+                )
+            ][::-1]
+        )
+
+        return remaining + "," + last_three
+
+    else:
+
+        return last_three
+
+
+# Format INR price
+
+formatted_inr = format_indian_currency(
+    inr_price
+)
+
+# Display
+
+st.markdown(f"""
+<h3 style='
+    text-align:center;
+    color:white;
+    margin-top:10px;
+    font-size:28px;
+'>
+Approx ₹{formatted_inr}
+</h3>
+""", unsafe_allow_html=True)
 
 # -----------------------------------
 # FEATURE IMPORTANCE
