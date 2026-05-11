@@ -237,8 +237,7 @@ if st.button("🪄 Predict House Price"):
     ]])
 
     # Prediction
-
-   predicted_price = model.predict(features)[0]
+predicted_price = model.predict(features)[0]
 
 
 # Real-time USD to INR exchange rate
