@@ -238,11 +238,11 @@ if st.button("🪄 Predict House Price"):
 
     # Predict
 
-    prediction = model.predict(features)
+    prediction = model.predict(features)[0]
 
     # Convert prediction to float
 
-    predicted_price = float(prediction)
+   predicted_price = prediction[0]
 
     # USD to INR conversion
 
