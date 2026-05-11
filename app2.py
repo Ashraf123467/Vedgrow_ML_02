@@ -255,7 +255,7 @@ if st.button("🪄 Predict House Price"):
        # data = response.json()
 
     #    usd_to_inr = float(
-            data["rates"]["INR"]
+    #        data["rates"]["INR"]
      #   )
 
    # except:
