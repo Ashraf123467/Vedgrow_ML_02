@@ -231,7 +231,7 @@ if st.button("🪄 Predict House Price"):
         total_bsmt_sf,
         year_built,
         full_bath,
-        totrms_abvgrd
+        tot_rms_abv_grd
     ]])
 
     # Prediction
