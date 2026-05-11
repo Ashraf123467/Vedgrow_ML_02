@@ -220,8 +220,6 @@ st.dataframe(input_data)
 # -----------------------------------
 # PREDICTION BUTTON
 # -----------------------------------
-# Predict Button
-
 if st.button("🪄 Predict House Price"):
 
     # Input features
@@ -236,13 +234,11 @@ if st.button("🪄 Predict House Price"):
         tot_rms_abv_grd
     ]])
 
-    # Predict
+    # Prediction
 
     prediction = model.predict(features)[0]
 
-    # Convert prediction to float
-
-   predicted_price = prediction
+    predicted_price = prediction
 
     # USD to INR conversion
 
@@ -291,7 +287,7 @@ if st.button("🪄 Predict House Price"):
     )
 
 
-    # Premium Prediction Card
+    # Premium Card
 
     st.markdown(f"""
 
