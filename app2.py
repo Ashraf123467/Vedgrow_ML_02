@@ -287,9 +287,11 @@ if st.button("🪄 Predict House Price"):
     )
 
 
-    # Premium Card
+   # Premium Prediction Card
 
-    st.markdown(f"""
+st.markdown(
+
+    f"""
 
     <div style="
         background: linear-gradient(
@@ -336,7 +338,10 @@ if st.button("🪄 Predict House Price"):
 
     </div>
 
-    """, unsafe_allow_html=True)
+    """,
+
+    unsafe_allow_html=True
+)
 
 # -----------------------------------
 # FEATURE IMPORTANCE
