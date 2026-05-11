@@ -311,7 +311,7 @@ if st.button("🪄 Predict House Price"):
             font-weight:bold;
             margin-bottom:30px;
         '>
-        ${predicted_price:,.0f}
+         $""" + f"{predicted_price:,.0f}" + """
         </h2>
 
         <h3 style='
@@ -319,7 +319,7 @@ if st.button("🪄 Predict House Price"):
             font-size:38px;
             font-weight:bold;
         '>
-        Approx ₹{formatted_inr}
+        Approx ₹""" + str(formatted_inr) + """
         </h3>
 
     </div>
