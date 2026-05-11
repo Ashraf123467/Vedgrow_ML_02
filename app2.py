@@ -222,6 +222,7 @@ st.dataframe(input_data)
 # -----------------------------------
 # PREDICTION BUTTON
 # -----------------------------------
+
 if st.button("🪄 Predict House Price"):
 
     # Input Features
@@ -237,32 +238,32 @@ if st.button("🪄 Predict House Price"):
     ]])
 
     # Prediction
-predicted_price = model.predict(features)[0]
+
+    predicted_price = model.predict(features)[0]
 
 
-# Real-time USD to INR exchange rate
+    # Real-time USD to INR exchange rate
 
-   try:
+    try:
 
-       response = requests.get(
-        "https://open.er-api.com/v6/latest/USD"
-       )
+        response = requests.get(
+            "https://open.er-api.com/v6/latest/USD"
+        )
 
-       data = response.json()
+        data = response.json()
 
-       usd_to_inr = data["rates"]["INR"]
+        usd_to_inr = data["rates"]["INR"]
 
-   except:
+    except:
 
-       # Fallback value if API fails
+        # Fallback value if API fails
 
-       usd_to_inr = 95
+        usd_to_inr = 95
 
 
-       # INR Conversion
+    # INR Conversion
 
-   inr_price = predicted_price * usd_to_inr
-
+    inr_price = predicted_price * usd_to_inr
 
 
     # Indian Currency Formatter
@@ -307,70 +308,70 @@ predicted_price = model.predict(features)[0]
 
     usd_price = f"${predicted_price:,.0f}"
 
-    inr_price = f"Approx ₹{formatted_inr}"
+    inr_display = f"Approx ₹{formatted_inr}"
 
 
     # Premium Result Card
 
     components.html(
-    f"""
-
-    <div style="
-        background: linear-gradient(135deg,#2563eb,#1d4ed8);
-        padding:70px;
-        border-radius:30px;
-        text-align:center;
-        margin-top:35px;
-        box-shadow:0px 12px 30px rgba(0,0,0,0.35);
-        color:white;
-        font-family:Poppins,sans-serif;
-        width:85%;
-        margin-left:auto;
-        margin-right:auto;
-    ">
+        f"""
 
         <div style="
-            font-size:34px;
-            font-weight:600;
-            margin-bottom:35px;
-            opacity:0.95;
+            background: linear-gradient(135deg,#2563eb,#1d4ed8);
+            padding:70px;
+            border-radius:30px;
+            text-align:center;
+            margin-top:35px;
+            box-shadow:0px 12px 30px rgba(0,0,0,0.35);
+            color:white;
+            font-family:Poppins,sans-serif;
+            width:85%;
+            margin-left:auto;
+            margin-right:auto;
         ">
-            🏡 Estimated House Price
+
+            <div style="
+                font-size:34px;
+                font-weight:600;
+                margin-bottom:35px;
+                opacity:0.95;
+            ">
+                🏡 Estimated House Price
+            </div>
+
+            <div style="
+                font-size:90px;
+                font-weight:800;
+                margin-bottom:28px;
+                letter-spacing:1px;
+            ">
+                {usd_price}
+            </div>
+
+            <div style="
+                width:140px;
+                height:5px;
+                background:white;
+                margin:0 auto 35px auto;
+                border-radius:10px;
+                opacity:0.7;
+            ">
+            </div>
+
+            <div style="
+                font-size:40px;
+                font-weight:600;
+                opacity:0.95;
+            ">
+                {inr_display}
+            </div>
+
         </div>
 
-        <div style="
-            font-size:90px;
-            font-weight:800;
-            margin-bottom:28px;
-            letter-spacing:1px;
-        ">
-            {usd_price}
-        </div>
+        """,
 
-        <div style="
-            width:140px;
-            height:5px;
-            background:white;
-            margin:0 auto 35px auto;
-            border-radius:10px;
-            opacity:0.7;
-        ">
-        </div>
-
-        <div style="
-            font-size:40px;
-            font-weight:600;
-            opacity:0.95;
-        ">
-            {inr_display}
-        </div>
-
-    </div>
-
-    """,
-
-    height=520
-)
+        height=520
+    )
 # -----------------------------------
 # FEATURE IMPORTANCE
 # -----------------------------------
