@@ -241,7 +241,7 @@ if st.button("🪄 Predict House Price"):
 
     predicted_price = model.predict(features)[0]
 
-    usd_to_inr = 95.32
+    usd_to_inr = 96.14
 
 
     # INR Conversion
